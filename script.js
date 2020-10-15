@@ -53,6 +53,15 @@ const clickOperations = e => {
 		display.innerHTML = memoryCurrentNumber;
 		memoryPendingOperation = symbol;
 	};
+
+	if(isPow) {
+		newPow = +memoryCurrentNumber;
+		powResult = Math.pow(+pow, newPow);
+		memoryCurrentNumber = powResult.toString();
+		powY = powResult;
+		display.innerHTML = powResult;
+		isPow = false;
+	}
 };
 operations.forEach(operation => {
 	operation.addEventListener('click', clickOperations);
@@ -92,3 +101,11 @@ const clickDel = () => {
 	 display.innerHTML = memoryCurrentNumber;
 };
 del.addEventListener('click', clickDel);
+
+const clickPow = ()=> {
+	memoryCurrentNumber = display.innerHTML;
+	pow = +memoryCurrentNumber;
+	display.innerHTML = pow+"^";
+
+};
+pows.addEventListener('click', clickPow);
